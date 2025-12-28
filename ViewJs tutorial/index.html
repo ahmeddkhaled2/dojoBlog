@@ -1,0 +1,54 @@
+<html lang = "en">
+
+<head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width = device-witdth, initial-scale = 1.0" >
+    <title> Learning Vue </title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <script src = "app.js" defer> </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body>
+
+    <h1> HEY MOTHERFUCKER </h1>
+
+    <div id = "app">
+        <div v-if="showBooks">
+            <p> {{title}} - {{author}} - {{age}} </p>
+            <button @click = age++> Increment age</button>
+            <button @click = "changeTitle('This is our new title')"> Renew title</button> 
+        </div>
+        <button @click = "hideBooks()">
+            <span v-if = "showBooks">hideBooks</span>
+            <span v-if = "!showBooks">showBooks</span>
+        </button>
+
+        <div class = "box" @mouseover = handleEvent($event)> First Box on mouse over</div>
+        <div class = "box" @mouseleave = handleEvent($event)>On mouse leave</div>
+        <div class = "box" @dblclick = handleEvent($event)>On mouse click</div>
+        <div class = "box" @mousemove = handleEvent($event)>On mouse move</div>
+        
+        <div v-if = "showBooks">
+            <ul>
+            <li v-for = "book in books" :class = "{specialImage : book.isSpecial}" @click = toggle(book)>
+                    <h3>{{book.title}}</h2>
+                    <img v-bind:src = book.img></img>
+                    <p>{{book.Author}}</p>
+                    <h4>{{book.Description}}</h4> 
+            </li>
+        </ul>   
+        </div>
+        
+        <button @click = "toggleBooks()">
+            <span v-if = "showBooks">Hide books</span>
+            <span v-if = "!showBooks">Show books</span>
+        </button>
+        <a v-bind:href = "url" target = "_blank">My website</a>
+
+
+        <button @click = "hideAll">
+
+</body>
